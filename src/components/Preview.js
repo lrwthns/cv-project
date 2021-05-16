@@ -8,7 +8,7 @@ class Preview extends Component {
   render() {
     const { personal, experience, education } = this.props;
     return (
-    <div>
+    <div className='Preview'>
       this is output
       <div>{personal.firstName}</div>
       <div>{personal.lastName}</div>
@@ -29,7 +29,6 @@ class Preview extends Component {
         <div>{education.university}</div>
         <div>{education.city}</div>
         <div>{education.degree}</div>
-        <div>{education.subject}</div>
         <div>{education.from}</div>
         <div>{education.to}</div>
       </div>

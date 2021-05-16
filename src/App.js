@@ -31,7 +31,6 @@ class App extends Component {
         university: '',
         city: '',
         degree: '',
-        subject: '',
         from: '',
         to: '',
       },

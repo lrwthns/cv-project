@@ -14,7 +14,7 @@ class Experience extends Component {
         <input type='text' name='city' placeholder='City' onChange={(e) => handleInput(e, 'experience')}></input>
         <input type='text' name='from' placeholder='From' onChange={(e) => handleInput(e, 'experience')}></input>
         <input type='text' name='to' placeholder='To' onChange={(e) => handleInput(e, 'experience')}></input>
-        <button>Delete</button>
+        <button className='delete'>Delete</button>
       </form>
     )
   }
@@ -26,12 +26,12 @@ class Experience extends Component {
 
   render() {
     return ( 
-    <div className='experience-container'>
+    <div className='Experience'>
       <div>Experience</div>
       <div className='experience-form-container'>
         <this.createExperienceForm/>
       </div>
-      <button onClick={this.attachForm}>
+      <button className='add' onClick={this.attachForm}>
         Add
       </button>
     </div>

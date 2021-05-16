@@ -8,7 +8,7 @@ class PersonalInfo extends Component {
   render() {
     const { handleInput } = this.props;
     return (
-      <div>
+      <div className='Personal'>
         <div>
         Personal Information
         </div>
