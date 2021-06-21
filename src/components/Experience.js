@@ -11,7 +11,6 @@ class Experience extends Component {
       <form>
         <input type='text' name='position' placeholder='Position' onChange={(e) => handleInput(e, 'experience')}></input>
         <input type='text' name='company' placeholder='Company' onChange={(e) => handleInput(e, 'experience')}></input>
-        <input type='text' name='city' placeholder='City' onChange={(e) => handleInput(e, 'experience')}></input>
         <input type='text' name='from' placeholder='From' onChange={(e) => handleInput(e, 'experience')}></input>
         <input type='text' name='to' placeholder='To' onChange={(e) => handleInput(e, 'experience')}></input>
         <button className='delete'>Delete</button>

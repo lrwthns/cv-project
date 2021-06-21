@@ -1,4 +1,3 @@
-import './styles/App.css';
 import React, { Component } from 'react';
 import PersonalInfo from './components/PersonalInfo';
 import Experience from './components/Experience';
@@ -11,30 +10,51 @@ class App extends Component {
 
     this.state = {
       personalDetails: {
-        firstName: '',
-        lastName: '',
-        title: '',
-        address: '',
-        phone: '',
-        mail: '',
-        linkedIn: '',
-        desc: '',
+        firstName: 'Jane',
+        lastName: 'Doe',
+        title: 'Senior Web Developer',
+        phone: '+668125646424111',
+        mail: 'jane.doe@gmail.com',
+        linkedIn: 'linkedin.com/in/janedoe',
+        desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
       },
       experience: {
-        position: '',
-        company: '',
-        city: '',
-        from: '',
-        to: '',
+        position: 'Senior Web Developer',
+        company: 'Google LLC',
+        from: '2018',
+        to: 'Present',
       },
       education: {
-        university: '',
-        city: '',
-        degree: '',
-        from: '',
-        to: '',
-      },
+        university: 'Stanford',
+        degree: 'Bachelor of Computer Science',
+        from: '2010',
+        to: '2014'
+      }
     }
+
+    // this.state = {
+    //   personalDetails: {
+    //     firstName: '',
+    //     lastName: '',
+    //     title: '',
+    //     phone: '',
+    //     mail: '',
+    //     linkedIn: '',
+    //     desc: '',
+    //   },
+    //   experience: {
+    //     position: '',
+    //     company: '',
+    //     from: '',
+    //     to: '',
+    //   },
+    //   education: {
+    //     university: '',
+    //     degree: '',
+    //     from: '',
+    //     to: '',
+    //   },
+    // }
   }
 
   changeState = (event, obj) => {
@@ -52,7 +72,6 @@ class App extends Component {
     
   }
 
-
   render() {
     const { personalDetails, experience, education } = this.state;
     return (
@@ -62,6 +81,7 @@ class App extends Component {
         <PersonalInfo handleInput={this.changeState}/>
         <Experience handleInput={this.changeState}/>
         <Education handleInput={this.changeState}/>
+        <button>Generate PDF</button>
       </div>
       <div className='output-container'>
         <Preview personal={personalDetails} experience={experience} education={education}/>

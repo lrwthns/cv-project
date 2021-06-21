@@ -10,8 +10,7 @@ class Education extends Component {
     return (
       <form>
         <input type='text' name='university' placeholder='University' onChange={(e) => handleInput(e, 'education')}></input>
-        <input type='text' name='city' placeholder='City' onChange={(e) => handleInput(e, 'education')}></input>
-        <input type='text' name='degree' placeholder='Degree' onChange={(e) => handleInput(e, 'education')}></input>
+        <input type='text' name='degree' placeholder='Degree/Subject' onChange={(e) => handleInput(e, 'education')}></input>
         <input type='text' name='from' placeholder='From' onChange={(e) => handleInput(e, 'education')}></input>
         <input type='text' name='to' placeholder='To' onChange={(e) => handleInput(e, 'education')}></input>
         <button className='delete'>Delete</button>
