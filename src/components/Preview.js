@@ -11,8 +11,7 @@ class Preview extends Component {
     <div className='Preview'>
       <div className="preview-header">
         <div className="preview-name">
-          <div>{personal.firstName}</div>
-          <div>{personal.lastName}</div>
+          <div>{personal.firstName + ' ' + personal.lastName}</div>
         </div>
         <div>{personal.title}</div>
       </div>
@@ -21,19 +20,25 @@ class Preview extends Component {
           <h1 className="preview-label">Description</h1>
           <div>{personal.desc}</div>
         </div>
-        <div>
+        <div className="preview-experience-container">
           <h1 className="preview-label">Experience</h1>
-          <div>{experience.position}</div>
-          <div>{experience.company}</div>
-          <div>{experience.from}</div>
-          <div>{experience.to}</div>
+          <div className="preview-experience">
+            <div>{experience.from + ' - ' + experience.to}</div>
+            <div>
+              <div>{experience.position}</div>
+              <div>{experience.company}</div>
+            </div>
+          </div>
         </div>
-        <div>
+        <div className="preview-education-container">
           <h1 className="preview-label">Education</h1>
-          <div>{education.university}</div>
-          <div>{education.degree}</div>
-          <div>{education.from}</div>
-          <div>{education.to}</div>
+          <div className="preview-education">
+            <div>{education.from + ' - ' + education.to}</div>
+            <div>
+              <div>{education.university}</div>
+              <div>{education.degree}</div>
+            </div>
+          </div>        
         </div>
       </div>
       <div className="preview-sidebar">

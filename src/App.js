@@ -13,7 +13,7 @@ class App extends Component {
         firstName: 'Jane',
         lastName: 'Doe',
         title: 'Senior Web Developer',
-        phone: '+668125646424111',
+        phone: '+012 345 67 890',
         mail: 'jane.doe@gmail.com',
         linkedIn: 'linkedin.com/in/janedoe',
         desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
@@ -25,10 +25,10 @@ class App extends Component {
         to: 'Present',
       },
       education: {
-        university: 'Stanford',
+        university: 'Stanford University',
         degree: 'Bachelor of Computer Science',
         from: '2010',
-        to: '2014'
+        to: '2014',
       }
     }
 
