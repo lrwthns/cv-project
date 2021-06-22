@@ -6,20 +6,20 @@ class PersonalInfo extends Component {
   }
 
   render() {
-    const { handleInput } = this.props;
+    const { handleInput, personal } = this.props;
     return (
       <div className='Personal'>
         <div>
         Personal Information
         </div>
         <form>
-          <input type='text' name='firstName' placeholder='First Name' onChange={(e) => {handleInput(e, 'personalDetails')}}></input>
-          <input type='text' name='lastName' placeholder='Last Name' onChange={(e) => {handleInput(e, 'personalDetails')}}></input>
-          <input type='text' name='title' placeholder='Title' onChange={(e) => {handleInput(e, 'personalDetails')}}></input>
-          <input type='text' name='phone' placeholder='Phone Number' onChange={(e) => {handleInput(e, 'personalDetails')}}></input>
-          <input type='text' name='mail' placeholder='Email' onChange={(e) => {handleInput(e, 'personalDetails')}}></input>
-          <input type='text' name='linkedIn' placeholder='LinkedIn' onChange={(e) => {handleInput(e, 'personalDetails')}}></input>
-          <textarea name='desc' placeholder='Description' onChange={(e) => {handleInput(e, 'personalDetails')}}></textarea>
+          <input type='text' value={personal.firstName} name='firstName' placeholder='First Name' onChange={(e) => {handleInput(e, 'personalDetails')}}></input>
+          <input type='text' value={personal.lastName} name='lastName' placeholder='Last Name' onChange={(e) => {handleInput(e, 'personalDetails')}}></input>
+          <input type='text' value={personal.title} name='title' placeholder='Title' onChange={(e) => {handleInput(e, 'personalDetails')}}></input>
+          <input type='text' value={personal.phone} name='phone' placeholder='Phone Number' onChange={(e) => {handleInput(e, 'personalDetails')}}></input>
+          <input type='text' value={personal.mail} name='mail' placeholder='Email' onChange={(e) => {handleInput(e, 'personalDetails')}}></input>
+          <input type='text' value={personal.linkedIn} name='linkedIn' placeholder='LinkedIn' onChange={(e) => {handleInput(e, 'personalDetails')}}></input>
+          <textarea value={personal.desc} name='desc' placeholder='Description' onChange={(e) => {handleInput(e, 'personalDetails')}}></textarea>
         </form>
       </div>
     )

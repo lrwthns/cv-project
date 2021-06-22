@@ -6,13 +6,13 @@ class Experience extends Component {
   }
 
   createExperienceForm = () => {
-    const { handleInput } = this.props;
+    const { handleInput, experience } = this.props;
     return (
       <form>
-        <input type='text' name='position' placeholder='Position' onChange={(e) => handleInput(e, 'experience')}></input>
-        <input type='text' name='company' placeholder='Company' onChange={(e) => handleInput(e, 'experience')}></input>
-        <input type='text' name='from' placeholder='From' onChange={(e) => handleInput(e, 'experience')}></input>
-        <input type='text' name='to' placeholder='To' onChange={(e) => handleInput(e, 'experience')}></input>
+        <input type='text' value={experience.position} name='position' placeholder='Position' onChange={(e) => handleInput(e, 'experience')}></input>
+        <input type='text' value={experience.company} name='company' placeholder='Company' onChange={(e) => handleInput(e, 'experience')}></input>
+        <input type='text' value={experience.from} name='from' placeholder='From' onChange={(e) => handleInput(e, 'experience')}></input>
+        <input type='text' value={experience.to} name='to' placeholder='To' onChange={(e) => handleInput(e, 'experience')}></input>
         <button className='delete'>Delete</button>
       </form>
     )

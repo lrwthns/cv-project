@@ -24,37 +24,15 @@ class App extends Component {
         from: '2018',
         to: 'Present',
       },
+      experienceList: [],
       education: {
         university: 'Stanford University',
         degree: 'Bachelor of Computer Science',
         from: '2010',
         to: '2014',
-      }
+      },
+      educationList: [],
     }
-
-    // this.state = {
-    //   personalDetails: {
-    //     firstName: '',
-    //     lastName: '',
-    //     title: '',
-    //     phone: '',
-    //     mail: '',
-    //     linkedIn: '',
-    //     desc: '',
-    //   },
-    //   experience: {
-    //     position: '',
-    //     company: '',
-    //     from: '',
-    //     to: '',
-    //   },
-    //   education: {
-    //     university: '',
-    //     degree: '',
-    //     from: '',
-    //     to: '',
-    //   },
-    // }
   }
 
   changeState = (event, obj) => {
@@ -77,15 +55,18 @@ class App extends Component {
     return (
     <div className='App'>
       <div className='header'>CV Generator</div>
-      <div className='input-container'>
-        <PersonalInfo handleInput={this.changeState}/>
-        <Experience handleInput={this.changeState}/>
-        <Education handleInput={this.changeState}/>
-        <button>Generate PDF</button>
+      <div className="main-container">
+        <div className='input-container'>
+          <PersonalInfo handleInput={this.changeState} personal={personalDetails}/>
+          <Experience handleInput={this.changeState} experience={experience}/>
+          <Education handleInput={this.changeState} education={education}/>
+          <button>Generate PDF</button>
+        </div>
+        <div className='output-container'>
+          <Preview personal={personalDetails} experience={experience} education={education}/>
+        </div>
       </div>
-      <div className='output-container'>
-        <Preview personal={personalDetails} experience={experience} education={education}/>
-      </div>
+
     </div>
     )
   };
