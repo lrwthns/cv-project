@@ -19,11 +19,20 @@ class Education extends Component {
   }
 
   render() {
+    const { handleInput } = this.props;
     return (
       <div className='Education'>
         <div>Education</div>
         <this.createEducationForm/>
-        <button className='add'>Add</button>
+        <button className='add' onClick={(e) => {
+            handleInput(e, 'educationList', true, {
+              education: '',
+              degree: '',
+              from: '',
+              to: '',
+            })
+          }
+        }>Add</button>
       </div>
     )
   }

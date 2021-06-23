@@ -24,42 +24,77 @@ class App extends Component {
         from: '2018',
         to: 'Present',
       },
-      experienceList: [],
+      experienceList: [{
+        position: '',
+        company: '',
+        from: '',
+        to: '',
+      }],
       education: {
         university: 'Stanford University',
         degree: 'Bachelor of Computer Science',
         from: '2010',
         to: '2014',
       },
-      educationList: [],
+      educationList: [{
+        university: '',
+        degree: '',
+        from: '',
+        to: '',
+      }],
     }
   }
 
-  changeState = (event, obj) => {
-    const value = event.target.value;
-    this.setState({
-      ...this.state,
-      [obj]: {
-        ...this.state[obj],
-        [event.target.name]: value,
-      }
-    }, () => {
-      console.log(this.state[obj][event.target.name]);
-      console.log(this.state)
-    })
-    
+
+  changeState = (event, obj, addForm = false, formObj = '') => {
+    if (addForm === true) {
+      this.setState({
+        [obj]: [...this.state[obj], formObj]
+      }, () => {
+        console.log(this.state[obj]);
+        console.log(this.state)
+      })
+    } else {
+      const value = event.target.value;
+      this.setState({
+        [obj]: {
+          ...this.state[obj],
+          [event.target.name]: value,
+        }
+      }, () => {
+        console.log(this.state[obj][event.target.name]);
+        console.log(this.state)
+      })
+    }
   }
 
+  
+
+  // changeState = (event, obj) => {
+  //   const value = event.target.value;
+  //   this.setState({
+  //     ...this.state,
+  //     [obj]: {
+  //       ...this.state[obj],
+  //       [event.target.name]: value,
+  //     }
+  //   }, () => {
+  //     console.log(this.state[obj][event.target.name]);
+  //     console.log(this.state)
+  //   })
+    
+  // }
+
   render() {
-    const { personalDetails, experience, education } = this.state;
+    const { personalDetails, experience, education, experienceList, educationList } = this.state;
     return (
     <div className='App'>
       <div className='header'>CV Generator</div>
       <div className="main-container">
         <div className='input-container'>
           <PersonalInfo handleInput={this.changeState} personal={personalDetails}/>
-          <Experience handleInput={this.changeState} experience={experience}/>
-          <Education handleInput={this.changeState} education={education}/>
+          <Experience handleInput={this.changeState} experience={experience} experienceList={experienceList}/>
+          <Education handleInput={this.changeState} education={education} educationList={educationList}/>
           <button>Generate PDF</button>
         </div>
         <div className='output-container'>
