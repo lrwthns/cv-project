@@ -6,7 +6,7 @@ class Preview extends Component {
   }
 
   render() {
-    const { personal, experience, education } = this.props;
+    const { personal, experienceList, educationList } = this.props;
     return (
     <div className='Preview'>
       <div className="preview-header">
@@ -22,23 +22,35 @@ class Preview extends Component {
         </div>
         <div className="preview-experience-container">
           <h1 className="preview-label">Experience</h1>
-          <div className="preview-experience">
-            <div>{experience.from + ' - ' + experience.to}</div>
-            <div>
-              <div>{experience.position}</div>
-              <div>{experience.company}</div>
-            </div>
-          </div>
+          {
+            experienceList.map((experience) => {
+              return (
+                <div className="preview-experience">
+                <div>{experience.from + ' - ' + experience.to}</div>
+                <div>
+                  <div>{experience.position}</div>
+                  <div>{experience.company}</div>
+                </div>
+              </div>
+              )
+            })
+          }
         </div>
         <div className="preview-education-container">
           <h1 className="preview-label">Education</h1>
-          <div className="preview-education">
-            <div>{education.from + ' - ' + education.to}</div>
-            <div>
-              <div>{education.university}</div>
-              <div>{education.degree}</div>
-            </div>
-          </div>        
+          {
+            educationList.map((education) => {
+              return (
+                <div className="preview-education">
+                <div>{education.from + ' - ' + education.to}</div>
+                <div>
+                  <div>{education.university}</div>
+                  <div>{education.degree}</div>
+                </div>
+              </div>        
+              )
+            }) 
+          }
         </div>
       </div>
       <div className="preview-sidebar">

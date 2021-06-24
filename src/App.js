@@ -18,24 +18,12 @@ class App extends Component {
         linkedIn: 'linkedin.com/in/janedoe',
         desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
       },
-      experience: {
-        position: 'Senior Web Developer',
-        company: 'Google LLC',
-        from: '2018',
-        to: 'Present',
-      },
       experienceList: [{
         position: '',
         company: '',
         from: '',
         to: '',
       }],
-      education: {
-        university: 'Stanford University',
-        degree: 'Bachelor of Computer Science',
-        from: '2010',
-        to: '2014',
-      },
       educationList: [{
         university: '',
         degree: '',
@@ -82,7 +70,7 @@ class App extends Component {
   }
 
   render() {
-    const { personalDetails, experience, education, experienceList, educationList } = this.state;
+    const { personalDetails, experienceList, educationList } = this.state;
     return (
     <div className='App'>
       <div className='header'>CV Generator</div>
@@ -94,7 +82,7 @@ class App extends Component {
           <button>Generate PDF</button>
         </div>
         <div className='output-container'>
-          <Preview personal={personalDetails} experience={experience} education={education}/>
+          <Preview personal={personalDetails} experienceList={experienceList} educationList={educationList}/>
         </div>
       </div>
 
