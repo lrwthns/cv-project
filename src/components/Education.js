@@ -1,29 +1,19 @@
 import React, { Component } from 'react';
+import CreateForm from './CreateForm';
 
 class Education extends Component {
   constructor(props) {
     super(props);
   }
 
-  createEducationForm = () => {
-    const { handleInput, education } = this.props;
-    return (
-      <form>
-        <input type='text' value={education.university} name='university' placeholder='University' onChange={(e) => handleInput(e, 'education')}></input>
-        <input type='text' value={education.degree} name='degree' placeholder='Degree/Subject' onChange={(e) => handleInput(e, 'education')}></input>
-        <input type='text' value={education.from} name='from' placeholder='From' onChange={(e) => handleInput(e, 'education')}></input>
-        <input type='text' value={education.to} name='to' placeholder='To' onChange={(e) => handleInput(e, 'education')}></input>
-        <button className='delete'>Delete</button>
-      </form>
-    )
-  }
-
   render() {
-    const { handleInput } = this.props;
+    const { handleInput, educationList } = this.props;
     return (
       <div className='Education'>
         <div>Education</div>
-        <this.createEducationForm/>
+        {educationList.map((edu, index) => {
+          return <CreateForm handleInput={handleInput} component='Education' educationList={educationList} key={index} id={index}/>
+        })}
         <button className='add' onClick={(e) => {
             handleInput(e, 'educationList', true, {
               education: '',

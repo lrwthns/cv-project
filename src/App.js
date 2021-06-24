@@ -45,14 +45,27 @@ class App extends Component {
     }
   }
 
-
-  changeState = (event, obj, addForm = false, formObj = '') => {
+  changeState = (event, obj, addForm = false, formObj = '', id = '') => {
     if (addForm === true) {
       this.setState({
         [obj]: [...this.state[obj], formObj]
       }, () => {
         console.log(this.state[obj]);
         console.log(this.state)
+      })
+    } else if (obj === 'experienceList' || obj === 'educationList') {
+      const value = event.target.value;
+      this.setState({
+        [obj]: [
+          ...this.state[obj].slice(0, id),
+          {
+            ...this.state[obj][id],
+            [event.target.name]: value,
+          },
+          ...this.state[obj].slice(id+1),
+      ]
+      }, () => {
+        console.log(this.state);
       })
     } else {
       const value = event.target.value;
@@ -68,23 +81,6 @@ class App extends Component {
     }
   }
 
-  
-
-  // changeState = (event, obj) => {
-  //   const value = event.target.value;
-  //   this.setState({
-  //     ...this.state,
-  //     [obj]: {
-  //       ...this.state[obj],
-  //       [event.target.name]: value,
-  //     }
-  //   }, () => {
-  //     console.log(this.state[obj][event.target.name]);
-  //     console.log(this.state)
-  //   })
-    
-  // }
-
   render() {
     const { personalDetails, experience, education, experienceList, educationList } = this.state;
     return (
@@ -93,8 +89,8 @@ class App extends Component {
       <div className="main-container">
         <div className='input-container'>
           <PersonalInfo handleInput={this.changeState} personal={personalDetails}/>
-          <Experience handleInput={this.changeState} experience={experience} experienceList={experienceList}/>
-          <Education handleInput={this.changeState} education={education} educationList={educationList}/>
+          <Experience handleInput={this.changeState} experienceList={experienceList}/>
+          <Education handleInput={this.changeState} educationList={educationList}/>
           <button>Generate PDF</button>
         </div>
         <div className='output-container'>
