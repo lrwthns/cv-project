@@ -81,12 +81,16 @@ class App extends Component {
     return (
     <div className='App'>
       <div className='header'>CV Generator</div>
-      <div className="main-container">
+      <div className='main-container'>
         <div className='input-container'>
           <PersonalInfo handleInput={this.changeState} personal={personalDetails}/>
           <Experience handleInput={this.changeState} experienceList={experienceList}/>
           <Education handleInput={this.changeState} educationList={educationList}/>
-          <button>Generate PDF</button>
+          <div className='input-buttons'>
+            <button>Generate PDF</button>
+            <button>Load Example</button>
+            <button>Reset</button>
+          </div>
         </div>
         <div className='output-container'>
           <Preview personal={personalDetails} experienceList={experienceList} educationList={educationList}/>
