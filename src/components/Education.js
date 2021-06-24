@@ -15,12 +15,12 @@ class Education extends Component {
           return <CreateForm handleInput={handleInput} component='Education' educationList={educationList} key={index} id={index}/>
         })}
         <button className='add' onClick={(e) => {
-            handleInput(e, 'educationList', true, {
-              education: '',
+            handleInput(e, 'educationList', '', {
+              university: '',
               degree: '',
               from: '',
               to: '',
-            })
+            }, true)
           }
         }>Add</button>
       </div>

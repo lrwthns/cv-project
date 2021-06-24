@@ -17,12 +17,12 @@ class Experience extends Component {
         })}
       </div>
       <button className='add' onClick={(e) => { 
-          handleInput(e, 'experienceList', true, {
+          handleInput(e, 'experienceList', '', {
             position: '',
             company: '',
             from: '',
             to: '',
-          })
+          }, true)
         }
       }>Add</button>
     </div>

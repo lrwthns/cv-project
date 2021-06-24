@@ -114,6 +114,7 @@ button:focus {
 }
 
 .add {
+  margin-top: 1rem;
   margin-left: 1.6rem;
   width: 93.5%;
 }

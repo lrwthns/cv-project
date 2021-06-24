@@ -23,15 +23,15 @@ class Preview extends Component {
         <div className="preview-experience-container">
           <h1 className="preview-label">Experience</h1>
           {
-            experienceList.map((experience) => {
+            experienceList.map((experience, index) => {
               return (
-                <div className="preview-experience">
-                <div>{experience.from + ' - ' + experience.to}</div>
-                <div>
-                  <div>{experience.position}</div>
-                  <div>{experience.company}</div>
+                <div className="preview-experience" key={index}>
+                  <div>{experience.from + ' - ' + experience.to}</div>
+                  <div>
+                    <div>{experience.position}</div>
+                    <div>{experience.company}</div>
+                  </div>
                 </div>
-              </div>
               )
             })
           }
@@ -39,15 +39,15 @@ class Preview extends Component {
         <div className="preview-education-container">
           <h1 className="preview-label">Education</h1>
           {
-            educationList.map((education) => {
+            educationList.map((education, index) => {
               return (
-                <div className="preview-education">
-                <div>{education.from + ' - ' + education.to}</div>
-                <div>
-                  <div>{education.university}</div>
-                  <div>{education.degree}</div>
-                </div>
-              </div>        
+                <div className="preview-education" key={index}>
+                  <div>{education.from + ' - ' + education.to}</div>
+                  <div>
+                    <div>{education.university}</div>
+                    <div>{education.degree}</div>
+                  </div>
+                </div>        
               )
             }) 
           }

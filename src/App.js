@@ -33,12 +33,19 @@ class App extends Component {
     }
   }
 
-  changeState = (event, obj, addForm = false, formObj = '', id = '') => {
+  changeState = (event, obj, id = '', formObj = '', addForm = false, deleteForm = false) => {
     if (addForm === true) {
       this.setState({
         [obj]: [...this.state[obj], formObj]
       }, () => {
         console.log(this.state[obj]);
+        console.log(this.state)
+      })
+    } else if (deleteForm === true) {
+      event.preventDefault()
+      this.setState({
+        [obj]: this.state[obj].filter((item, i) => i !== id)
+      }, () => {
         console.log(this.state)
       })
     } else if (obj === 'experienceList' || obj === 'educationList') {
