@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
 
 class PersonalInfo extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const { handleInput, personal } = this.props;
     return (
       <div className='Personal'>
-        <div>
+        <div className='input-label'>
         Personal Information
         </div>
         <form>
