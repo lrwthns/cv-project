@@ -3,6 +3,9 @@ import React, { Component } from 'react';
 class Preview extends Component {
   render() {
     const { personal, experienceList, educationList } = this.props;
+    // sorts the lists by from date
+    const sortedExperienceList = [...experienceList].sort((a, b) => (a.from > b.from) ? -1 : 1);
+    const sortedEducationList = [...educationList].sort((a, b) => (a.from > b.from) ? -1 : 1);
     return (
     <div className='Preview'>
       <div className="preview-header">
@@ -19,7 +22,7 @@ class Preview extends Component {
         <div className="preview-experience-container">
           <h1 className="preview-label">Experience</h1>
           {
-            experienceList.map((experience, index) => {
+            sortedExperienceList.map((experience, index) => {
               return (
                 <div className="preview-experience" key={index}>
                   <div>{experience.from + ' - ' + experience.to}</div>
@@ -35,7 +38,7 @@ class Preview extends Component {
         <div className="preview-education-container">
           <h1 className="preview-label">Education</h1>
           {
-            educationList.map((education, index) => {
+            sortedEducationList.map((education, index) => {
               return (
                 <div className="preview-education" key={index}>
                   <div>{education.from + ' - ' + education.to}</div>

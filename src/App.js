@@ -154,7 +154,7 @@ class App extends Component {
           <div className='input-buttons'>
             <ReactToPrint trigger={() => {
               return <button>Generate PDF</button>
-            }} content={() => this.componentRef} fonts={[{family: 'Karla', local:'./fonts/Karla-ExtraLight.ttf'}]}/>
+            }} content={() => this.componentRef}/>
             <button onClick={this.loadExampleState}>Load Example</button>
             <button onClick={this.resetState}>Reset</button>
           </div>
@@ -163,7 +163,6 @@ class App extends Component {
           <Preview ref={el => (this.componentRef = el)} personal={personalDetails} experienceList={experienceList} educationList={educationList}/>
         </div>
       </div>
-
     </div>
     )
   };
