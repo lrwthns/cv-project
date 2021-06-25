@@ -67,6 +67,80 @@ class App extends Component {
     }
   }
 
+  loadExampleState = () => {
+    this.setState({
+      personalDetails: {
+        firstName: 'Andre',
+        lastName: 'Lance',
+        title: 'Web Developer',
+        phone: '+098 756 32 41',
+        mail: 'andre.lance@gmail.com',
+        linkedIn: 'linkedin.com/in/andrelance',
+        desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+      },
+      experienceList: [{
+        position: 'Senior Web Developer',
+        company: 'Airbnb Inc.',
+        from: '2019',
+        to: 'Present',
+      }, {
+        position: 'Web Developer',
+        company: 'Jetz Technologies',
+        from: '2016',
+        to: '2018',
+      }, {
+        position: 'Junior Web Developer',
+        company: 'Philodendron LLC',
+        from: '2014',
+        to: '2016',
+      }, {
+        position: 'Web Development Intern',
+        company: 'Amazon Inc.',
+        from: '2013',
+        to: '2014',
+      }, ],
+      educationList: [{
+        university: 'University of Colorado Boulder',
+        degree: 'B.S. in Computer Science',
+        from: '2010',
+        to: '2014',
+      }, {
+        university: 'Miami State University',
+        degree: 'A.A. in Programming',
+        from: '2008',
+        to: '2010',
+      }],
+    })
+  }
+
+  resetState = () => {
+    this.setState({
+      personalDetails: {
+        firstName: '',
+        lastName: '',
+        title: '',
+        phone: '',
+        mail: '',
+        linkedIn: '',
+        desc: '',
+      },
+      experienceList: [{
+        position: '',
+        company: '',
+        from: '',
+        to: '',
+      }],
+      educationList: [{
+        university: '',
+        degree: '',
+        from: '',
+        to: '',
+      }],
+    }, () => {
+      console.log(this.state);
+    })
+  }
+
   render() {
     const { personalDetails, experienceList, educationList } = this.state;
     return (
@@ -81,8 +155,8 @@ class App extends Component {
             <ReactToPrint trigger={() => {
               return <button>Generate PDF</button>
             }} content={() => this.componentRef} fonts={[{family: 'Karla', local:'./fonts/Karla-ExtraLight.ttf'}]}/>
-            <button>Load Example</button>
-            <button>Reset</button>
+            <button onClick={this.loadExampleState}>Load Example</button>
+            <button onClick={this.resetState}>Reset</button>
           </div>
         </div>
         <div className='output-container'>
