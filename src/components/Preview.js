@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Preview extends Component {
-  render() {
-    const { personal, experienceList, educationList } = this.props;
+const Preview = (props) => {
+    const { personal, experienceList, educationList } = props;
     // sorts the lists by from date
     const sortedExperienceList = [...experienceList].sort((a, b) => (a.from > b.from) ? -1 : 1);
     const sortedEducationList = [...educationList].sort((a, b) => (a.from > b.from) ? -1 : 1);
+    
     return (
     <div className='Preview'>
       <div className="preview-header">
@@ -69,7 +69,6 @@ class Preview extends Component {
       </div>
     </div>
     )
-  }
 }
 
 export default Preview;

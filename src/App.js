@@ -1,74 +1,70 @@
-import React, { Component } from 'react';
+import React, { useRef, useState } from 'react';
 import PersonalInfo from './components/PersonalInfo';
 import Experience from './components/Experience';
 import Education from './components/Education';
 import Preview from './components/Preview';
 import ReactToPrint from 'react-to-print';
 
-class App extends Component {
-  constructor() {
-    super();
+const App = () => {
+  const [ state, setState ] = useState({
+    personalDetails: {
+      firstName: '',
+      lastName: '',
+      title: '',
+      phone: '',
+      mail: '',
+      linkedIn: '',
+      desc: '',
+    },
+    experienceList: [{
+      position: '',
+      company: '',
+      from: '',
+      to: '',
+    }],
+    educationList: [{
+      university: '',
+      degree: '',
+      from: '',
+      to: '',
+    }],
+  });
 
-    this.state = {
-      personalDetails: {
-        firstName: '',
-        lastName: '',
-        title: '',
-        phone: '',
-        mail: '',
-        linkedIn: '',
-        desc: '',
-      },
-      experienceList: [{
-        position: '',
-        company: '',
-        from: '',
-        to: '',
-      }],
-      educationList: [{
-        university: '',
-        degree: '',
-        from: '',
-        to: '',
-      }],
-    }
-  }
-
-  changeState = (event, obj, id = '', formObj = '', addForm = false, deleteForm = false) => {
+  const changeState = (event, obj, id = '', formObj = '', addForm = false, deleteForm = false) => {
     if (addForm === true) {
-      this.setState({
-        [obj]: [...this.state[obj], formObj]
+      setState({
+        [obj]: [...state[obj], formObj]
       })
     } else if (deleteForm === true) {
       event.preventDefault()
-      this.setState({
-        [obj]: this.state[obj].filter((item, i) => i !== id)
+      setState({
+        [obj]: state[obj].filter((item, i) => i !== id)
       })
     } else if (obj === 'experienceList' || obj === 'educationList') {
       const value = event.target.value;
-      this.setState({
+      setState({
         [obj]: [
-          ...this.state[obj].slice(0, id),
+          ...state[obj].slice(0, id),
           {
-            ...this.state[obj][id],
+            ...state[obj][id],
             [event.target.name]: value,
           },
-          ...this.state[obj].slice(id+1),
+          ...state[obj].slice(id+1),
       ]
       })
     } else {
       const value = event.target.value;
-      this.setState({
+      setState({
         [obj]: {
-          ...this.state[obj],
+          ...state[obj],
           [event.target.name]: value,
         }
       })
     }
   }
 
-  loadExampleState = () => {
-    this.setState({
+  const loadExampleState = () => {
+    setState({
       personalDetails: {
         firstName: 'Andre',
         lastName: 'Lance',
@@ -113,8 +109,8 @@ class App extends Component {
     })
   }
 
-  resetState = () => {
-    this.setState({
+  const resetState = () => {
+    setState({
       personalDetails: {
         firstName: '',
         lastName: '',
@@ -136,36 +132,34 @@ class App extends Component {
         from: '',
         to: '',
       }],
-    }, () => {
-      console.log(this.state);
     })
   }
 
-  render() {
-    const { personalDetails, experienceList, educationList } = this.state;
-    return (
-    <div className='App'>
-      <div className='header'>CV Generator</div>
-      <div className='main-container'>
-        <div className='input-container'>
-          <PersonalInfo handleInput={this.changeState} personal={personalDetails}/>
-          <Experience handleInput={this.changeState} experienceList={experienceList}/>
-          <Education handleInput={this.changeState} educationList={educationList}/>
-          <div className='input-buttons'>
-            <ReactToPrint trigger={() => {
-              return <button>Generate PDF</button>
-            }} content={() => this.componentRef}/>
-            <button onClick={this.loadExampleState}>Load Example</button>
-            <button onClick={this.resetState}>Reset</button>
-          </div>
-        </div>
-        <div className='output-container'>
-          <Preview ref={el => (this.componentRef = el)} personal={personalDetails} experienceList={experienceList} educationList={educationList}/>
+  const { personalDetails, experienceList, educationList } = state;
+  const componentRef = useRef();
+
+  return (
+  <div className='App'>
+    <div className='header'>CV Generator</div>
+    <div className='main-container'>
+      <div className='input-container'>
+        <PersonalInfo handleInput={changeState} personal={personalDetails}/>
+        <Experience handleInput={changeState} experienceList={experienceList}/>
+        <Education handleInput={changeState} educationList={educationList}/>
+        <div className='input-buttons'>
+          <ReactToPrint 
+          trigger={() => <button>Generate PDF</button>} 
+          content={() => componentRef.current}/>
+          <button onClick={loadExampleState}>Load Example</button>
+          <button onClick={resetState}>Reset</button>
         </div>
       </div>
+      <div ref={componentRef} className='output-container'>
+        <Preview personal={personalDetails} experienceList={experienceList} educationList={educationList}/>
+      </div>
     </div>
-    )
-  };
+  </div>
+  )
 }
 
 export default App;
